@@ -8,9 +8,10 @@ const mockTasks: Task[] = [
     title: 'Clean the house',
     description: 'Deep clean all rooms including kitchen and bathrooms',
     priority: 'high',
-    status: 'pending',
+    status: 'completed',
     deadline: '2024-12-30',
     createdAt: '2024-12-25',
+    completedAt: '2024-12-29',
     dependencies: []
   },
   {
@@ -49,9 +50,10 @@ const mockTasks: Task[] = [
     title: 'Write proposal',
     description: 'Draft the project proposal document',
     priority: 'high',
-    status: 'in-progress',
+    status: 'completed',
     deadline: '2024-12-28',
     createdAt: '2024-12-24',
+    completedAt: '2024-12-27',
     dependencies: []
   },
   {
@@ -59,10 +61,117 @@ const mockTasks: Task[] = [
     title: 'Review proposal',
     description: 'Review and edit the drafted proposal',
     priority: 'medium',
-    status: 'pending',
+    status: 'completed',
     deadline: '2024-12-29',
     createdAt: '2024-12-25',
+    completedAt: '2024-12-28',
     dependencies: ['5']
+  },
+  {
+    id: '7',
+    title: 'Submit proposal',
+    description: 'Submit the final proposal to stakeholders',
+    priority: 'high',
+    status: 'pending',
+    deadline: '2024-12-30',
+    createdAt: '2024-12-25',
+    dependencies: ['6']
+  },
+  // Complex 4-dependency chain: Research → Plan → Design → Develop → Deploy
+  {
+    id: '8',
+    title: 'Research market trends',
+    description: 'Conduct thorough market research and competitor analysis',
+    priority: 'high',
+    status: 'completed',
+    deadline: '2025-01-02',
+    createdAt: '2024-12-20',
+    completedAt: '2024-12-28',
+    dependencies: []
+  },
+  {
+    id: '9',
+    title: 'Create project plan',
+    description: 'Develop detailed project timeline and resource allocation',
+    priority: 'high',
+    status: 'completed',
+    deadline: '2025-01-05',
+    createdAt: '2024-12-21',
+    completedAt: '2024-12-30',
+    dependencies: ['8']
+  },
+  {
+    id: '10',
+    title: 'Design system architecture',
+    description: 'Create technical architecture and system design documents',
+    priority: 'high',
+    status: 'in-progress',
+    deadline: '2025-01-08',
+    createdAt: '2024-12-22',
+    dependencies: ['9']
+  },
+  {
+    id: '11',
+    title: 'Develop MVP features',
+    description: 'Build core functionality and minimum viable product',
+    priority: 'high',
+    status: 'pending',
+    deadline: '2025-01-15',
+    createdAt: '2024-12-23',
+    dependencies: ['10']
+  },
+  {
+    id: '12',
+    title: 'Deploy to production',
+    description: 'Deploy application to production environment and configure monitoring',
+    priority: 'medium',
+    status: 'pending',
+    deadline: '2025-01-20',
+    createdAt: '2024-12-24',
+    dependencies: ['11']
+  },
+  // 3-dependency chain: Study → Notes → Practice → Exam
+  {
+    id: '13',
+    title: 'Study course materials',
+    description: 'Review all course content and textbook chapters',
+    priority: 'high',
+    status: 'completed',
+    deadline: '2025-01-03',
+    createdAt: '2024-12-20',
+    completedAt: '2024-12-29',
+    dependencies: []
+  },
+  {
+    id: '14',
+    title: 'Take comprehensive notes',
+    description: 'Organize and summarize key concepts from study materials',
+    priority: 'medium',
+    status: 'completed',
+    deadline: '2025-01-06',
+    createdAt: '2024-12-21',
+    completedAt: '2024-12-31',
+    dependencies: ['13']
+  },
+  {
+    id: '15',
+    title: 'Complete practice tests',
+    description: 'Take multiple practice exams to assess readiness',
+    priority: 'high',
+    status: 'pending',
+    deadline: '2025-01-10',
+    createdAt: '2024-12-22',
+    dependencies: ['14']
+  },
+  {
+    id: '16',
+    title: 'Take final exam',
+    description: 'Complete the certification exam',
+    priority: 'high',
+    status: 'pending',
+    deadline: '2025-01-12',
+    createdAt: '2024-12-23',
+    dependencies: ['15']
   }
 ];
 
