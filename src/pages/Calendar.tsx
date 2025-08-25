@@ -59,28 +59,31 @@ export default function CalendarPage() {
   // Task Event Component
   const TaskEvent = ({ task, isCompact = false }) => {
     const priorityColors = {
-      high: 'bg-priority-high text-priority-high-foreground border-priority-high',
-      medium: 'bg-priority-medium text-priority-medium-foreground border-priority-medium',
-      low: 'bg-priority-low text-priority-low-foreground border-priority-low'
+      high: 'bg-priority-high/90 text-priority-high-foreground border-l-priority-high hover:bg-priority-high',
+      medium: 'bg-priority-medium/90 text-priority-medium-foreground border-l-priority-medium hover:bg-priority-medium',
+      low: 'bg-priority-low/90 text-priority-low-foreground border-l-priority-low hover:bg-priority-low'
     };
 
     const statusStyles = task.status === 'completed' 
-      ? 'opacity-70 line-through bg-success/20 text-success border-success' 
+      ? 'opacity-70 line-through bg-success/30 text-success-foreground border-l-success hover:bg-success/40' 
       : priorityColors[task.priority];
 
     return (
       <div
         className={`
-          p-1 mb-1 rounded text-xs cursor-pointer transition-all hover:shadow-sm border-l-4
+          p-2 mb-1 rounded-r text-xs cursor-pointer transition-all hover:shadow-sm border-l-4 font-medium
           ${statusStyles}
-          ${isCompact ? 'truncate' : ''}
+          ${isCompact ? 'truncate py-1' : 'min-h-[2rem]'}
         `}
-        onClick={() => toggleTaskComplete(task.id)}
-        title={`${task.title} - ${task.description || 'No description'}`}
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleTaskComplete(task.id);
+        }}
+        title={`${task.title} - ${task.description || 'No description'} (${task.priority} priority)`}
       >
-        <div className="font-medium truncate">{task.title}</div>
+        <div className="font-medium truncate leading-tight">{task.title}</div>
         {!isCompact && task.description && (
-          <div className="text-xs opacity-75 truncate">{task.description}</div>
+          <div className="text-xs opacity-80 truncate mt-0.5 leading-tight">{task.description}</div>
         )}
       </div>
     );
@@ -134,12 +137,12 @@ export default function CalendarPage() {
                       {day.getDate()}
                     </div>
                     <div className="space-y-0.5 overflow-hidden">
-                      {dayTasks.slice(0, 3).map(task => (
+                      {dayTasks.slice(0, 4).map(task => (
                         <TaskEvent key={task.id} task={task} isCompact />
                       ))}
-                      {dayTasks.length > 3 && (
-                        <div className="text-xs text-muted-foreground px-1">
-                          +{dayTasks.length - 3} more
+                      {dayTasks.length > 4 && (
+                        <div className="text-xs text-muted-foreground px-2 py-1 bg-muted/50 rounded">
+                          +{dayTasks.length - 4} more
                         </div>
                       )}
                     </div>
@@ -186,10 +189,24 @@ export default function CalendarPage() {
               {weekDays.map(day => {
                 const dayTasks = getTasksForDate(day);
                 return (
-                  <div key={day.toISOString()} className="border-r p-1 hover:bg-muted/10">
-                    {hour === 9 && dayTasks.map(task => (
-                      <TaskEvent key={task.id} task={task} />
-                    ))}
+                  <div key={day.toISOString()} className="border-r p-1 hover:bg-muted/10 relative">
+                    {/* Display tasks in different time slots */}
+                    {hour >= 8 && hour <= 18 && dayTasks.length > 0 && (
+                      <div className="space-y-1">
+                        {dayTasks.slice(0, 2).map((task, idx) => (
+                          <TaskEvent 
+                            key={task.id} 
+                            task={task} 
+                            isCompact={dayTasks.length > 1}
+                          />
+                        ))}
+                        {dayTasks.length > 2 && (
+                          <div className="text-xs text-muted-foreground bg-muted/50 rounded px-1 py-0.5">
+                            +{dayTasks.length - 2}
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -230,9 +247,13 @@ export default function CalendarPage() {
           <div className="flex-1">
             {Array.from({ length: 24 }, (_, hour) => (
               <div key={hour} className="h-16 border-b p-2 hover:bg-muted/10">
-                {hour === 9 && dayTasks.map(task => (
-                  <TaskEvent key={task.id} task={task} />
-                ))}
+                {hour >= 6 && hour <= 22 && dayTasks.length > 0 && (
+                  <div className="space-y-1">
+                    {dayTasks.map(task => (
+                      <TaskEvent key={task.id} task={task} />
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>

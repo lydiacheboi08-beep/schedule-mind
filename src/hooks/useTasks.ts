@@ -9,7 +9,7 @@ const mockTasks: Task[] = [
     description: 'Deep clean all rooms including kitchen and bathrooms',
     priority: 'high',
     status: 'completed',
-    deadline: '2024-12-30',
+    deadline: '2025-01-15',
     createdAt: '2024-12-25',
     completedAt: '2024-12-29',
     dependencies: []
@@ -20,7 +20,7 @@ const mockTasks: Task[] = [
     description: 'Organize furniture and decorations after cleaning',
     priority: 'medium',
     status: 'pending',
-    deadline: '2024-12-31',
+    deadline: '2025-01-20',
     createdAt: '2024-12-25',
     dependencies: ['1']
   },
@@ -30,7 +30,7 @@ const mockTasks: Task[] = [
     description: 'Buy ingredients for dinner preparation',
     priority: 'high',
     status: 'completed',
-    deadline: '2024-12-26',
+    deadline: '2025-01-10',
     createdAt: '2024-12-24',
     completedAt: '2024-12-26',
     dependencies: []
@@ -41,7 +41,7 @@ const mockTasks: Task[] = [
     description: 'Prepare a nice dinner with fresh ingredients',
     priority: 'medium',
     status: 'pending',
-    deadline: '2024-12-26',
+    deadline: '2025-01-12',
     createdAt: '2024-12-25',
     dependencies: ['3']
   },
@@ -51,7 +51,7 @@ const mockTasks: Task[] = [
     description: 'Draft the project proposal document',
     priority: 'high',
     status: 'completed',
-    deadline: '2024-12-28',
+    deadline: '2025-01-08',
     createdAt: '2024-12-24',
     completedAt: '2024-12-27',
     dependencies: []
@@ -62,7 +62,7 @@ const mockTasks: Task[] = [
     description: 'Review and edit the drafted proposal',
     priority: 'medium',
     status: 'completed',
-    deadline: '2024-12-29',
+    deadline: '2025-01-09',
     createdAt: '2024-12-25',
     completedAt: '2024-12-28',
     dependencies: ['5']
@@ -73,7 +73,7 @@ const mockTasks: Task[] = [
     description: 'Submit the final proposal to stakeholders',
     priority: 'high',
     status: 'pending',
-    deadline: '2024-12-30',
+    deadline: '2025-01-11',
     createdAt: '2024-12-25',
     dependencies: ['6']
   },
@@ -106,7 +106,7 @@ const mockTasks: Task[] = [
     description: 'Create technical architecture and system design documents',
     priority: 'high',
     status: 'in-progress',
-    deadline: '2025-01-08',
+    deadline: '2025-01-18',
     createdAt: '2024-12-22',
     dependencies: ['9']
   },
@@ -116,7 +116,7 @@ const mockTasks: Task[] = [
     description: 'Build core functionality and minimum viable product',
     priority: 'high',
     status: 'pending',
-    deadline: '2025-01-15',
+    deadline: '2025-01-25',
     createdAt: '2024-12-23',
     dependencies: ['10']
   },
@@ -126,7 +126,7 @@ const mockTasks: Task[] = [
     description: 'Deploy application to production environment and configure monitoring',
     priority: 'medium',
     status: 'pending',
-    deadline: '2025-01-20',
+    deadline: '2025-01-30',
     createdAt: '2024-12-24',
     dependencies: ['11']
   },
@@ -159,7 +159,7 @@ const mockTasks: Task[] = [
     description: 'Take multiple practice exams to assess readiness',
     priority: 'high',
     status: 'pending',
-    deadline: '2025-01-10',
+    deadline: '2025-01-14',
     createdAt: '2024-12-22',
     dependencies: ['14']
   },
@@ -169,9 +169,50 @@ const mockTasks: Task[] = [
     description: 'Complete the certification exam',
     priority: 'high',
     status: 'pending',
-    deadline: '2025-01-12',
+    deadline: '2025-01-16',
     createdAt: '2024-12-23',
     dependencies: ['15']
+  },
+  // Additional visible tasks for current dates
+  {
+    id: '17',
+    title: 'Team meeting',
+    description: 'Weekly team sync and project updates',
+    priority: 'medium',
+    status: 'pending',
+    deadline: '2025-01-27',
+    createdAt: '2025-01-20',
+    dependencies: []
+  },
+  {
+    id: '18',
+    title: 'Client presentation',
+    description: 'Present project progress to stakeholders',
+    priority: 'high',
+    status: 'pending',
+    deadline: '2025-01-28',
+    createdAt: '2025-01-21',
+    dependencies: []
+  },
+  {
+    id: '19',
+    title: 'Code review',
+    description: 'Review pull requests and provide feedback',
+    priority: 'low',
+    status: 'pending',
+    deadline: '2025-01-26',
+    createdAt: '2025-01-22',
+    dependencies: []
+  },
+  {
+    id: '20',
+    title: 'Documentation update',
+    description: 'Update project documentation and API docs',
+    priority: 'low',
+    status: 'pending',
+    deadline: '2025-01-29',
+    createdAt: '2025-01-23',
+    dependencies: []
   }
 ];
 
